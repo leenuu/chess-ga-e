@@ -8,6 +8,30 @@ void step_up()
 	re_map();
 }
 
+void cursorview(bool show)
+{
+	HANDLE hConsole;
+	CONSOLE_CURSOR_INFO ConsoleCursor;
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	ConsoleCursor.bVisible = show;
+	ConsoleCursor.dwSize = 1;
+	SetConsoleCursorInfo(hConsole, &ConsoleCursor);
+}
+
+void scolor(unsigned short text = 15, unsigned short back = 0)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), text | (back << 4));
+}
+
+void gotoxy(int x, int y)
+{
+
+	COORD cur;
+	cur.X = x;
+	cur.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cur);
+}
+
 void re_map()
 {
 	for (int y = 0; y < 8; y++)
@@ -18,6 +42,7 @@ void re_map()
 		}
 	}
 }
+
 
 void print_map()
 {
