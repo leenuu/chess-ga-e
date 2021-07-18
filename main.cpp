@@ -3,6 +3,8 @@
 #include <windows.h>
 #include <conio.h>
 #include <time.h>
+#include <map>
+#include <string>
 
 #include "set_up.h"
 
